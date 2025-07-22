@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "AppCanEngineModule"
+    },
+    {
+      "name": "EBrowserAbility_desc",
+      "value": "AppCanBaseAbility"
+    },
+    {
+      "name": "EBrowserAbility_label",
+      "value": "AppCanEngine"
+    }
+  ]
+}

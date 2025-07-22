@@ -1,0 +1,57 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "storeFile": "./signatures/appcan_developer.p12",
+          "storePassword": "0000001CC618CFCE3268DCAE9A33338224272ED2C37E2F062CF82F7391B8C18884E1E7FBD8CF1E5BB3C84184",
+          "keyAlias": "developer",
+          "keyPassword": "0000001CE4421FEDD5B317511CB2794CB3DCFD499F3351B28552DA1546768FDCACA444DB852F8EA5CA7EA569",
+          "signAlg": "SHA256withECDSA",
+          "profile": "./signatures/AppCanEngine-Debug.p7b",
+          "certpath": "./signatures/appcan_developer.cer"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "5.0.4(16)",
+        "runtimeOS": "HarmonyOS"
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "uexDemo",
+      "srcPath": "./plugins/uexDemo",
+    },
+    {
+      "name": "engine",
+      "srcPath": "./engine",
+    }
+  ]
+}

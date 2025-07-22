@@ -1,0 +1,64 @@
+{
+  "plugins": [
+    {
+      "uexName": "uexWidgetOne",
+      "methods": [
+        "getPlatform",
+        "exit",
+        "getCurrentWidgetInfo",
+        "cleanCache",
+        "getMainWidgetId",
+        "getEngineVersion",
+        "getEngineVersionCode",
+        "restart"
+      ]
+    },
+    {
+      "uexName": "uexWindow",
+      "methods": [
+        "open",
+        "close",
+        "openPopover",
+        "closePopover",
+        "setPopoverFrame",
+        "preOpenStart",
+        "preOpenFinish",
+        "alert",
+        "confirm",
+        "prompt",
+        "toast",
+        "closeToast",
+        "actionSheet",
+        "createProgressDialog",
+        "destroyProgressDialog",
+        "getUrlQuery",
+        "getWidth",
+        "getHeight",
+        "getState",
+        "subscribeChannelNotification",
+        "publishChannelNotification",
+        "publishChannelNotificationForJson",
+        "postGlobalNotification",
+        "evaluateScript",
+        "evaluatePopoverScript",
+        "pageBack",
+        "pageForward",
+        "forward",
+        "back",
+        "putLocalData",
+        "getLocalData",
+        "removeLocalData",
+        "setReportKey",
+        "setOrientation"
+      ]
+    },
+    {
+      "uexName": "uexWidget",
+      "methods": [
+        "startWidget",
+        "finishWidget",
+        "getOpenerInfo"
+      ]
+    }
+  ]
+}

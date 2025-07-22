@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "模块描述"
+    },
+    {
+      "name": "EBrowserAbility_desc",
+      "value": "AppCanBaseAbility"
+    },
+    {
+      "name": "EBrowserAbility_label",
+      "value": "AppCan引擎"
+    }
+  ]
+}

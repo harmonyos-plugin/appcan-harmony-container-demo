@@ -1,0 +1,71 @@
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "srcEntry": "./ets/EBrowserAbilityStage.ets",
+    "description": "$string:module_desc",
+    "mainElement": "EBrowserAbility",
+    "deviceTypes": [
+      "phone",
+      "tablet",
+      "2in1"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:appcan_pages",
+    "abilities": [
+      {
+        "name": "EBrowserAbility",
+        "srcEntry": "./ets/EBrowserAbility.ets",
+        "description": "$string:EBrowserAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:EBrowserAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "launchType": "specified",
+        "exported": true,
+        "removeMissionAfterTerminate": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "name": "appcan.metadata.config",
+            "resource": "$profile:appcan_config"
+          },
+          {
+            "name": "appcan.metadata.internal.plugins",
+            "resource": "$profile:appcan_internal_plugins"
+          },
+          {
+            "name": "appcan.metadata.extend.plugins",
+            "resource": "$profile:appcan_extend_plugins"
+          }
+        ]
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO",
+        "usedScene": {
+          "abilities": ["EBrowserAbility"],
+          "when": "inuse"
+        }
+      },
+      {
+        "name": "ohos.permission.INTERNET",
+        "usedScene": {
+          "abilities": ["EBrowserAbility"],
+          "when": "inuse"
+        }
+      }
+    ]
+  }
+}

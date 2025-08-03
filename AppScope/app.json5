@@ -1,7 +1,7 @@
 {
   "app": {
-    "bundleName": "org.zymobi.appcan.engine",
-    "vendor": "example",
+    "bundleName": "org.zymobi.appcan.engine.container.demo",
+    "vendor": "appcan",
     "versionCode": 1000000,
     "versionName": "1.0.0",
     "icon": "$media:app_icon",

@@ -1,4 +1,4 @@
-import { AppCanConfigProvider } from '@appcan/engine/src/main/ets/widgetone/appcanconfig/AppCanConfigProvider';
+import { AppCanConfigProvider } from '@appcan/engine';
 import { bundleManager } from '@kit.AbilityKit';
 
 /**

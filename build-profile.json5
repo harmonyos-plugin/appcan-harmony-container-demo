@@ -48,10 +48,6 @@
     {
       "name": "uexDemo",
       "srcPath": "./plugins/uexDemo",
-    },
-    {
-      "name": "engine",
-      "srcPath": "./engine",
     }
   ]
 }

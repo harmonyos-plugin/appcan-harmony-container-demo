@@ -41,10 +41,6 @@
             "resource": "$profile:appcan_config"
           },
           {
-            "name": "appcan.metadata.internal.plugins",
-            "resource": "$profile:appcan_internal_plugins"
-          },
-          {
             "name": "appcan.metadata.extend.plugins",
             "resource": "$profile:appcan_extend_plugins"
           }

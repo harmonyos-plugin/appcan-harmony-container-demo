@@ -22,7 +22,7 @@ git clone https://github.com/harmonyos-plugin/appcan-plugin-demo-harmonyos ./plu
   - 开发者可以在此模块中进行应用级别的定制，例如修改应用图标、名称、欢迎页等。
   - `entry/src/main/resources/base/profile/` 目录下存放了AppCan框架的核心配置文件，例如：
     - `appcan_config.json`: AppCan应用级别配置。
-    - `appcan_internal_plugins.json`: AppCan内置插件配置。
+    - ~~`appcan_internal_plugins.json`: AppCan内置插件配置~~（已经集成在engine模块内）。
     - `appcan_extend_plugins.json`: AppCan扩展插件配置（通常由开发者自定义）。
     - `appcan_pages.json`: AppCan页面路由配置。
 - `plugins`目录：**扩展插件模块**。

@@ -1,10 +1,16 @@
 import { window } from '@kit.ArkUI';
 import { EBrowserBaseAbility, BDebug, WWidgetData, BConstant } from '@appcan/engine'
 import { Want } from '@kit.AbilityKit';
+import AppCanUIInitCoordinator from './AppCanUIInitCoordinator';
 
 export default class EBrowserAbility extends EBrowserBaseAbility {
   readonly LogTag: string = 'EBrowserAbility';
 
+  /**
+   * Ability 窗口创建后加载主/子应用启动页。
+   *
+   * 主应用 RootSplashPage 加载完成后，主窗口 UIContext 已可获取，此时通过协调器提前触发 AppCan UI 初始化。
+   */
   onWindowStageCreate(windowStage: window.WindowStage): void {
     super.onWindowStageCreate(windowStage);
     // Main window is created, set main page for this ability
@@ -35,6 +41,8 @@ export default class EBrowserAbility extends EBrowserBaseAbility {
           BDebug.error(this.LogTag, 'Failed to load the content. Cause: ' + JSON.stringify(err) ?? '');
           return;
         }
+        const uiContext = windowStage.getMainWindowSync().getUIContext();
+        AppCanUIInitCoordinator.getInstance().startRootUIInit(uiContext);
         BDebug.info(this.LogTag, 'Succeeded in loading the content.');
       });
     }

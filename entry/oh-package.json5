@@ -6,8 +6,8 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "@appcan/uexDemo": "file:../plugins/uexDemo",
-    "@appcan/engine": "^0.9.27"
+    "@appcan/engine": "^1.0.0",
+    "@appcan/uexdemo": "file:../plugins/uexDemo"
   },
   "devDependencies": {},
   "dynamicDependencies": {}

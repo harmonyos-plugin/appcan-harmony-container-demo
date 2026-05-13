@@ -17,18 +17,43 @@ git clone https://github.com/harmonyos-plugin/appcan-plugin-demo-harmonyos ./plu
 
 ## 工程结构
 
-- `entry`模块：**应用主入口模块**。
-  - 这是整个鸿蒙应用的主模块，负责应用的启动、全局配置的加载以及首页的展示。
-  - 开发者可以在此模块中进行应用级别的定制，例如修改应用图标、名称、欢迎页等。
-  - `entry/src/main/resources/base/profile/` 目录下存放了AppCan框架的核心配置文件，例如：
-    - `appcan_config.json`: AppCan应用级别配置。
-    - ~~`appcan_internal_plugins.json`: AppCan内置插件配置~~（已经集成在engine模块内）。
-    - `appcan_extend_plugins.json`: AppCan扩展插件配置（通常由开发者自定义）。
-    - `appcan_pages.json`: AppCan页面路由配置。
-- `plugins`目录：**扩展插件模块**。
-  - 存放各个功能插件的独立模块，例如`uexDemo`是一个示例插件。
-  - 开发者可以参照`AppCan鸿蒙插件开发指南.md`来开发自己的插件。
-- `hvigorfile.ts`, `build-profile.json5`, `oh-package.json5`: 鸿蒙工程的构建和配置文件。
+- `AppScope/`：应用级配置目录。
+  - `AppScope/app.json5`：应用包名、版本、图标、名称等应用级元数据。
+  - `AppScope/resources/base/`：应用级字符串、图标等资源。
+- `entry/`：宿主容器主模块，负责应用启动、AppCan初始化、页面入口和widget资源装载。
+  - 除插件注入相关配置外，本模块的大部分启动代码都与AppCan引擎初始化流程强关联；如果不了解初始化链路，不建议随意改动。
+  - `entry/src/main/module.json5`：entry模块的Ability声明、首页入口、权限和AppCan元数据注册。
+  - `entry/src/main/ets/`：主启动链路和初始化逻辑。
+    - `EBrowserAbilityStage.ets`：HAP首次加载时初始化AppCan核心能力。
+    - `EBrowserAbility.ets`：根据启动参数区分主应用和子widget启动流程。
+    - `AppCanUIInitCoordinator.ets`：协调主应用UI初始化时机，避免启动页和UI初始化顺序错位。
+    - `RootSplashPage.ets` / `SubSplashPage.ets`：主应用与子widget各自的启动页。
+    - `AppCanConfigProviderImpl.ets`：提供AppCan应用配置。
+    - `AppCanExPluginProvider.ets`：注册外部插件配置和插件实例。
+    - 其中 `AppCanExPluginProvider.ets` 是插件接入的主要扩展点；除此之外，其余初始化相关 `.ets` 文件通常都与引擎启动时序直接相关，除非已经了解整体机制，否则不建议改动。
+  - `entry/src/main/resources/base/profile/`：AppCan相关配置入口。
+    - `appcan_config.json`：AppCan应用级配置。
+    - `appcan_pages.json`：页面与路由配置。
+    - `appcan_extend_plugins.json`：兼容性占位配置；新插件机制下通常不再手工维护方法清单，插件应通过各自的`plugin.config.ts`和`AppCanExPluginProvider.ets`完成注册。
+    - 除扩展插件注入相关配置外，此目录下的其余配置也会参与引擎初始化和页面装载流程，修改前建议先确认影响范围。
+  - `entry/src/main/resources/resfile/widget/`：默认widget资源、测试页面和前端静态资源。
+    - `config.xml`：widget基础配置。
+    - `index.html`：默认首页入口。
+    - `js/`、`css/`、`assets/`：前端运行资源。
+    - `uexDemo/`：示例插件对应的测试页面资源。
+- `plugins/`：扩展插件模块目录。
+  - 当前demo默认包含`plugins/uexDemo/`示例插件。
+  - `plugins/uexDemo/Index.ets`：插件导出入口。
+  - `plugins/uexDemo/uexDemo/plugin.config.ts`：插件对外方法声明。
+  - `plugins/uexDemo/docs/`：插件开发和机制迁移文档。
+- 根目录构建文件：
+  - `build-profile.json5`：工程级构建配置。
+  - `hvigorfile.ts`：Hvigor构建入口。
+  - `oh-package.json5`：工程级依赖配置。
+  - `oh-package-lock.json5`：工程级依赖锁文件。
+- 自动生成目录：
+  - `oh_modules/`：依赖安装产物。
+  - `.hvigor/`：构建缓存和中间产物。
 
 ## 调试证书配置
 

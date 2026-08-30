@@ -25,3 +25,42 @@ function testFirstInterface(){
 function testHandleFileProtocolPath(){
     uexDemo.testHandleFileProtocolPath();
 }
+
+// Plugin View 最小测试入口：页面只负责发起添加和移除请求，实际显示效果需结合设备观察。
+function addPluginView(viewCount){
+    if (!window.uexDemo || typeof window.uexDemo.addPluginView !== 'function') {
+        const message = 'uexDemo.addPluginView 不可用';
+        console.warn(message);
+        displayResult(message);
+        return;
+    }
+    try {
+        const result = window.uexDemo.addPluginView(viewCount);
+        const message = '添加 Plugin View 请求结果：' + result;
+        console.log(message);
+        displayResult(message);
+    } catch (error) {
+        const message = '添加 Plugin View 调用失败：' + error;
+        console.error(message);
+        displayResult(message);
+    }
+}
+
+function removePluginView(){
+    if (!window.uexDemo || typeof window.uexDemo.removePluginView !== 'function') {
+        const message = 'uexDemo.removePluginView 不可用';
+        console.warn(message);
+        displayResult(message);
+        return;
+    }
+    try {
+        const result = window.uexDemo.removePluginView();
+        const message = '移除 Plugin View 请求结果：' + result;
+        console.log(message);
+        displayResult(message);
+    } catch (error) {
+        const message = '移除 Plugin View 调用失败：' + error;
+        console.error(message);
+        displayResult(message);
+    }
+}

@@ -6,7 +6,7 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "@appcan/engine": "^1.0.0",
+    "@appcan/engine": "1.1.0",
     "@appcan/uexdemo": "file:../plugins/uexDemo"
   },
   "devDependencies": {},
